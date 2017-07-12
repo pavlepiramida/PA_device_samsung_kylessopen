@@ -15,5 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_kylessopen.mk \
-    $(LOCAL_DIR)/carbon_kylessopen.mk
+    $(LOCAL_DIR)/kylessopen.mk

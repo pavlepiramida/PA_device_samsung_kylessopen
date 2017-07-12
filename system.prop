@@ -2,7 +2,8 @@
 # system.prop for kylessopen
 #
 
-
+# Audio
+lpa.min_duration=60000000
 
 # Call Recording
 persist.call_recording.enabled=1
@@ -21,14 +22,10 @@ debug.gr.numframebuffers=3
 ro.bq.gpu_to_cpu_unsupported=1
 
 # Memory
+ro.zram.default=1
 persist.sys.purgeable_assets=1
 sys.mem.max_hidden_apps=10
-
-#Audio LPA fix
-lpa.min_duration=60000000
-
-
-
+ro.ksm.default=1
 
 # Qualcomm
 com.qc.hardware=true
@@ -36,11 +33,16 @@ ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 # Telephony
 rild.libpath=/system/lib/libril-qc-1.so
-rild.libargs=-d /dev/smd0
+rild.libargs=-d /dev/smd0 
+
 ril.subscription.types=NV,RUIM
-#ro.telephony.ril_class=SamsungRIL
-ro.telephony.call_ring.multiple=false
-ro.telephony.call_ring.delay=1000
+ro.telephony.call_ring.multiple=false 
+ro.telephony.call_ring.delay=1000  
+# ro.ril.gprsclass=10
+# ro.ril.hsxpa=1
+telephony.lteOnGsmDevice=false
+telephony.lteOnCdmaDevice=false
+
 
 # USB
 persist.sys.usb.config=mtp,adb

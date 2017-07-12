@@ -34,6 +34,7 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 # Kernel
+
 TARGET_KERNEL_CONFIG := franken_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/kylessopen
 TARGET_BOOTLOADER_BOARD_NAME := kylessopen
@@ -53,15 +54,13 @@ BOARD_VOLD_MAX_PARTITIONS := 24
 
 # Qualcomm hardware
 BOARD_USES_QCOM_HARDWARE := true
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 
 # Odex builds
 WITH_DEXPREOPT := true
 
-#Use prebuilt chromium
-PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
-PRODUCT_PREBUILT_WEBVIEWCHROMIUM=yes
+# External apps on SD
+TARGET_EXTERNAL_APPS = sdcard0
 
 # Graphics
 BOARD_EGL_CFG := device/samsung/kylessopen/prebuilt/system/lib/egl/egl.cfg
@@ -69,20 +68,20 @@ USE_OPENGL_RENDERER := true
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 TARGET_NO_HW_VSYNC := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
-
 BOARD_USE_MHEAP_SCREENSHOT := true
 
 # OMX
 TARGET_QCOM_LEGACY_OMX := true
-TARGET_QCOM_LEGACY_MMPARSER := true
 TARGET_QCOM_MEDIA_VARIANT := legacy
 COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
-
 
 # Audio
 TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 COMMON_GLOBAL_CFLAGS += -DNO_TUNNELED_SOURCE
+
+# PowerHAL
+TARGET_USES_CM_POWERHAL := true
 
 # Optimizations used by Qualcomm
 TARGET_CORTEX_CACHE_LINE_32 := true
@@ -97,7 +96,6 @@ ARCH_ARM_HIGH_OPTIMIZATION := true
 # Camera
 BOARD_USES_PROPRIETARY_LIBCAMERA := true
 BOARD_NEEDS_MEMORYHEAPPMEM := true
-TARGET_DISABLE_ARM_PIE := true
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DSAMSUNG_CAMERA_LEGACY -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Wi-Fi
@@ -109,6 +107,8 @@ BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_ath6kl
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/ath6kl_sdio.ko"
 WIFI_DRIVER_MODULE_NAME := "ath6kl_sdio"
+WIFI_EXT_MODULE_PATH := "/system/lib/modules/cfg80211.ko"
+WIFI_EXT_MODULE_NAME := "cfg80211"
 WIFI_TEST_INTERFACE := "sta"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP  := "ap"
@@ -140,24 +140,15 @@ BOARD_LPM_BOOT_ARGUMENT_NAME := androidboot.bootchg
 BOARD_LPM_BOOT_ARGUMENT_VALUE := batt
 
 # Recovery
-TARGET_RECOVERY_INITRC := device/samsung/kylessopen/ramdisk/init.recovery.rc
+TARGET_RECOVERY_INITRC := device/samsung/kylessopen/recovery/init.rc
 TARGET_RECOVERY_FSTAB := device/samsung/kylessopen/ramdisk/fstab.qcom
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/kylessopen/recovery/recovery_keys.c
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
 TARGET_USERIMAGES_USE_EXT4 := true
-RECOVERY_SDCARD_ON_DATA := true
+TARGET_USERIMAGES_USE_F2FS := true
+BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_HAS_DOWNLOAD_MODE := true
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
-DEVICE_RESOLUTION := 480x800
-TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-TW_INCLUDE_FB2PNG := true
-TW_NO_REBOOT_BOOTLOADER := true
-TW_HAS_DOWNLOAD_MODE := true
-SKIP_SET_METADATA := true
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-TARGET_RECOVERY_LCD_BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_DEFAULT_EXTERNAL_STORAGE := true
