@@ -1,3 +1,17 @@
-CarbonROM 4.4 device tree for the Samsung Galaxy Ace II X (GT-S7560M)
+ParanoidAndroid-legacy 4.4 device tree for the Samsung Galaxy Ace II X (GT-S7560M)
+
+AOSPA-legacy is based around CM (all aospa project have been mereged with cm-11.0) so ALL fixes on my forked CM projects are applicable on aospa-legacy.
+
+Since aospa-legacy deleted their frameworks_webview project of their github,you need to remove it from default.xml in order to get things synced.
+Since its pretty important project you can use AOSPA frameworks_webview as long as you match its branches with the rest of the source (dont clone anyother branch than kitkat).
+
+As I said,since its merged with CM you can use all my cm forks (except frameworks_av and frameworks_base,but you can reuse commits in these projects).
+
+As always legacymod/display-legacy IS A MUST in order too boot,
+for wifi you need legacymod atheros 
+AND for bluetooth you need to remove bluedroid and replace it with bluez project which can be obtained (along with Bluetooth application project that supports bluez) from KlinkOnE github page.
+
+Other than that theres not much to say,ROM is pretty neat and runs well,
+be sure to use make3.82-make4.1,other will give you strange dependencies issues and missing symbols.
 
 
