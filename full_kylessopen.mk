@@ -1,4 +1,3 @@
-
 #
 # Copyright (C) 2014 The CyanogenMod Project
 #
@@ -19,7 +18,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/samsung/kylessopen/kylessopen.mk)
+$(call inherit-product, device/samsung/kylessopen/cm.mk)
 $(call inherit-product-if-exists, vendor/samsung/kylessopen/kylessopen-vendor.mk)
 
 # Device identifier. This must come after all inclusions.
