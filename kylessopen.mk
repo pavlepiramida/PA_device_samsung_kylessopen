@@ -6,7 +6,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_AAPT_CONFIG := normal hdpi 
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-PRODUCT_TAGS += dalvik.gc.type-precise
 
 
 PRODUCT_PACKAGES += \
@@ -64,8 +63,6 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm7x27a \
     libtilerenderer
     
-# Torch
-PRODUCT_PACKAGES += OmniTorch
 
 #Apollo
 PRODUCT_PACKAGES += Apollo
@@ -96,12 +93,10 @@ PRODUCT_COPY_FILES += \
 # Prebuilt
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/samsung/kylessopen/prebuilt/system,system)
-    
-
-    
+     
 #Optimization for low-memory devices
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.low_ram=true 
+    ro.config.low_ram=false
 
 # Hardware features available on this device
 PRODUCT_COPY_FILES += \
